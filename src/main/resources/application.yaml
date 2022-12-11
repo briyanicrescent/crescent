@@ -1,0 +1,34 @@
+spring:
+   datasource:
+      driver-class-name: org.postgresql.Driver
+      url: "jdbc:postgresql://localhost:5432/crescent?autoreconnect=true"
+      username: "crescent"
+      password: "crescent2023"
+      hikari:
+         connection-test-query: SELECT 1
+         connection-timeout: 30000
+         maximum-pool-size: 20
+         max-lifetime: 30000
+   jpa:
+      database-platform: org.hibernate.dialect.PostgreSQLDialect
+      show_sql: true
+      open-in-view: false
+      properties:
+        hibernate:
+          default_schema: crescent
+   cache:
+     type: redis
+     cache-names: ID_BL_ACCESS_TOKEN, ID_REFRESHED_ACCESS_TOKEN, ID_REFRESH_TOKEN, ID_BL_REFRESH_TOKEN, ID_REFRESH_IN_PROGRESS
+     redis:
+       cache-null-values: true
+auth:
+  google:
+    client-id: 656458709655-86jt0m9ea559r73pdnds2ccff1sgd7tp.apps.googleusercontent.com
+  jwt:
+    key-store-path: /Users/jeeva/Documents/crescent/secure/jwt
+    key-store-password: crescent
+    key-alias: jwt
+    key-password: crescent
+    expiry-access-token: 300
+    bl-refresh-token-keep: 5
+    bl-access-token-keep: 5
